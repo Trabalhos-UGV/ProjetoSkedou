@@ -2,12 +2,12 @@
 
 # Descrição do projeto
 
-*Rafael Matheus Miers Sobrinho
-*Thiago Soares
-*Gabriel Dos Santos
-*Bruno de Paula
-*Wellinton Slabey
-*Gregory Amorim
+* Rafael Matheus Miers Sobrinho
+* Thiago Soares
+* Gabriel Dos Santos
+* Bruno de Paula
+* Wellinton Slabey
+* Gregory Amorim
 
 Skedou é um programa com o objetivo de cobrir de forma simples e eficaz uma parte de empresas médias e pequenas geralmente negligenciada: os agendamentos de serviços. Muitas utilizam uma forma de agendamento manual, como um caderno de anotações, ou um calendário integrado do próprio celular.
 
