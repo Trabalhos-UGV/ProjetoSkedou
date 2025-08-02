@@ -1,0 +1,21 @@
+{
+  "name": "skedou",
+  "version": "1.0.0",
+  "description": "Projeto de agendamentos de serviços",
+  "keywords": [
+    "agendamentos",
+    "projeto",
+    "faculdade",
+    "serviços"
+  ],
+  "license": "ISC",
+  "author": "Annie, Thiago, Gabriel, Wellinton, Bruno, Gregory",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
