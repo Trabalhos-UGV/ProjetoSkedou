@@ -1,0 +1,23 @@
+{
+  "name": "projetoskedou",
+  "version": "1.0.0",
+  "description": "Projeto de agendamentos de serviço",
+  "homepage": "https://github.com/Trabalhos-UGV/ProjetoSkedou#readme",
+  "bugs": {
+    "url": "https://github.com/Trabalhos-UGV/ProjetoSkedou/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Trabalhos-UGV/ProjetoSkedou.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
