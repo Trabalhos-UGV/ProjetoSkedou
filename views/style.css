@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.container-fundo {
+  /* Cor de fundo base, caso o gradiente não carregue */
+  background-color: #002e74;
+
+  /* Garante que o container ocupe a tela e posicione o fundo corretamente */
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Ocupa a altura total da tela */
+  overflow: hidden; /* Esconde as partes do gradiente que vazam */
+
+  /* Estilos para centralizar o conteúdo de exemplo */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.container-fundo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* A MÁGICA ACONTECE AQUI */
+  background: 
+                /* Círculo roxo/azulado no canto superior esquerdo */
+                /* ALTERAÇÃO AQUI: Cor levemente mais clara para aumentar o contraste */ radial-gradient(
+      circle 400px at -120px -120px,
+      #ceb4ee 0 60%,
+      transparent 150%
+    ),
+    /* Círculo azul escuro mais ao centro */
+      /* ALTERAÇÃO AQUI: Cor levemente mais escura e saturada para aumentar o contraste */
+      radial-gradient(circle at 40% 40%, #6161a4, transparent 25%),
+    /* Círculo roxo/azulado no lado direito */
+      /* ALTERAÇÃO AQUI: Cor levemente mais clara para aumentar o contraste */
+      radial-gradient(circle 100px at 100% 100%, #002e74, transparent 300%),
+    radial-gradient(circle 500px at 100% 100%, #c5d4ff, transparent 100%);
+  /* O desfoque que mistura todas as cores */
+  /* ALTERAÇÃO AQUI: Reduzimos um pouco o blur para as cores ficarem mais definidas */
+  filter: blur(100px);
+  /* Garante que o fundo fique atrás do conteúdo */
+  z-index: 0;
+}
+
+/* Garante que o conteúdo fique na frente do fundo */
+h1,
+p {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+/* Estilo para a demonstração da operação matemática */
+.math-demo {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-family: monospace;
+  text-align: center;
+}
