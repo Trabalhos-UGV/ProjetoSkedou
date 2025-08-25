@@ -39,9 +39,9 @@ body {
       #ceb4ee 0 60%,
       transparent 150%
     ),
-    radial-gradient(circle at 40% 40%, #002e74, transparent 20%),
-    radial-gradient(circle 100px at 100% 100%, #002e74, transparent 300%),
-    radial-gradient(circle 500px at 100% 100%, #c5d4ff, transparent 100%),
+    radial-gradient(circle 300px at 40% 40%, #002e74, transparent 20%),
+    radial-gradient(circle 50px at 100% 100%, #002e74, transparent 300%),
+    radial-gradient(circle 300px at 100% 110%, #c5d4ff, transparent 100%),
     radial-gradient(circle 150px at 50% 70%, #090167, transparent 150%),
     radial-gradient(
       circle 100px at 60% 10%,
@@ -54,12 +54,12 @@ body {
       transparent 100%
     ),
     radial-gradient(
-      circle 150px at 85% 45%,
+      circle 100px at 85% 45%,
       hsl(237, 76%, 90%),
       transparent 100%
     ),
     radial-gradient(
-      circle 250px at 95% 20%,
+      circle 500px at 95% 20%,
       hsl(237, 94%, 14%),
       transparent 100%
     ),
