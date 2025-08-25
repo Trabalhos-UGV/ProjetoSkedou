@@ -35,7 +35,7 @@ body {
 
   /* A MÁGICA ACONTECE AQUI */
   background: radial-gradient(
-      circle 300px at -120px -120px,
+      circle 250px at -120px -120px,
       #ceb4ee 0 100%,
       transparent 150%
     ),
