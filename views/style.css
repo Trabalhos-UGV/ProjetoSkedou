@@ -35,8 +35,8 @@ body {
 
   /* A MÁGICA ACONTECE AQUI */
   background: radial-gradient(
-      circle 400px at -120px -120px,
-      #ceb4ee 0 60%,
+      circle 300px at -120px -120px,
+      #ceb4ee 0 100%,
       transparent 150%
     ),
     radial-gradient(circle 300px at 40% 40%, #002e74, transparent 20%),
@@ -110,18 +110,20 @@ p {
   width: 100%;
   height: 100%;
   background: radial-gradient(
-      circle 250px at 100% 0%,
-      rgb(3, 3, 155),
+      circle 1
+      00px at 200% 0%,
+      rgb(60, 3, 155),
       transparent 150%
     ),
     radial-gradient(circle 250px at -20% 0%, rgb(3, 3, 155), transparent 150%),
     radial-gradient(
-      circle 250px at 10% 100%,
+      circle 150px at 10% 100%,
       rgb(87, 51, 202),
       transparent 170%
     ),
-    radial-gradient(circle 120px at 10% 40%, rgb(1, 3, 131), transparent 170%),
-    radial-gradient(circle 100px at 80% 60%, rgb(5, 9, 242), transparent 170%);
+    radial-gradient(circle 420px at 10% 40%, rgb(255, 255, 255), transparent 100%),
+    radial-gradient(circle 120px at 10% 40%, rgb(1, 3, 131), transparent 570%),
+    radial-gradient(circle 200px at 80% 60%, rgb(5, 9, 242), transparent 770%);
   filter: blur(100px);
   z-index: 0;
 }
