@@ -1,39 +1,28 @@
 body {
-  margin: 0;
-  font-family: sans-serif;
+  margin: 0; /* remove a margem padrao */
+  font-family: sans-serif; /* estilo das letras do bglh */
 }
 .app {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
+  display: flex; /* permite trabalhar com flexbox */
+  width: 100vw; /* para ocupar a largura total da tela */
+  height: 100vh; /* para ocuapr a altura total da tela */
 }
 .container-fundo {
-  /* Cor de fundo base, caso o gradiente não carregue */
-  background-color: #090167;
-
-  /* Garante que o container ocupe a tela e posicione o fundo corretamente */
-  position: relative;
-  width: 60vw;
+  background-color: #090167; /* Cor de fundo base */
+  position: relative; /* Garante que o container ocupe a tela e posicione o fundo corretamente */
+  width: 60vw; /* pra ocupar 60% da tela */
   height: 100vh; /* Ocupa a altura total da tela */
   overflow: hidden; /* Esconde as partes do gradiente que vazam */
-
-  /* Estilos para centralizar o conteúdo de exemplo */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
 }
 
 .container-fundo::before {
+  /* tudo isso a parti daqui com foco apenas no background: radial-gradient*/
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-
-  /* A MÁGICA ACONTECE AQUI */
   background: radial-gradient(
       circle 250px at -120px -120px,
       #ceb4ee 0 100%,
@@ -68,37 +57,18 @@ body {
       hsl(245, 100%, 73%),
       transparent 100%
     );
-  filter: blur(100px);
-  z-index: 0;
+  filter: blur(100px); /* aplica desfoque ao fundo  */
+  z-index: 0; /*  coloca tudo atras do conteudo */
 }
-
-/* Garante que o conteúdo fique na frente do fundo */
-h1,
-p {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-}
-
-/* Estilo para a demonstração da operação matemática */
-.math-demo {
-  background-color: rgba(255, 255, 255, 0.2);
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-  font-family: monospace;
-  text-align: center;
-}
-
 .login {
-  border: solid black 2px;
-  border-radius: 15px;
-  width: 50%;
-  height: 45%;
-  background-color: #090167;
-  z-index: 0;
+  border-radius: 15px; /*  arredondamento das bordas */
+  width: 50%; /* largura do login */
+  height: 45%; /*  altura do login */
+  background-color: #090167; /* cor de fundo  */
+  z-index: 0; /* garante que fique a frente dos backgroud linear gradient  */
 }
 .login::before {
+  /* isso tudo pra funcionar o backgroud linear gradient do login  */
   content: "";
   position: absolute;
   inset: 0;
@@ -110,22 +80,22 @@ p {
     radial-gradient(circle 150px at 30% 80%, #ffffff 0%, transparent 100%),
     radial-gradient(circle 100px at 70% 40%, #ffffff 0%, transparent 100%);
 
-  filter: blur(80px);
-  z-index: -1;
+  filter: blur(80px); /* borra os bglh  */
+  z-index: -1; /* garante que os backgroud fique por tras do conteudo  */
 }
 
 .fundoLadoD {
   position: relative;
-  width: 40vw;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 40vw; /* largura do fundo do login   */
+  height: 100vh; /*  altura do fundo do login */
+  overflow: hidden; /* garante que os backgroud linear respeite a div  */
+  display: flex; /* para trabalhar com flexbox  */
+  justify-content: center; /* alinhar a div de login ao centro */
+  align-items: center; /* alinhar a div de login ao centro */
 }
 
 .fundoLadoD::before {
+  /* isso tudo pra funcionar o backgroud linear gradient do fundo do login  */
   content: "";
   position: absolute;
   top: 0;
@@ -157,19 +127,68 @@ p {
     ),
     radial-gradient(circle 100px at 10% 90%, #ceb4ee 0 100%, transparent 150%);
 
-  filter: blur(70px);
-  z-index: 0;
+  filter: blur(70px); /* borra tudo */
+  z-index: 0; /* garante que o backgroud linear gradient fique a baixo do conteudo */
 }
-h1,
-p {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-}
-/* .login com foco unicamente no posicionamento do nome senha e botao entrar  */
 .login {
-  align-items: center;
-  align-content: center;
-  display: flex;
-  flex-direction: column;
+  display: flex; /* ativa o flexbox */
+  flex-direction: column; /* coloca os itens em coluna (um embaixo do outro) */
+  justify-content: center;
+  gap: 9px; /* espaço entre os elementos */
+  width: 250px; /* largura fixa padrão de tela de login */
+  padding: 20px; /* espaço interno */
+  margin-top: 50px; /* baixar tudo em relacao ao topo  */
+  align-items: center; /* alinhar tudo no centro  */
+}
+
+.login label {
+  text-align: left; /* texto do label alinhado à esquerda */
+  color: white; /* cor do texto */
+  align-self: flex-start; /* jogar o label full esquerda  */
+  margin-left: 2rem; /* tirar o label da esquerda e jogar pro meio */
+  margin-bottom: 2px; /* espaço pequeno embaixo do label */
+  font-family: "Montserrat", sans-serif; /* Fonte do bglh */
+}
+
+.login input[type="text"] {
+  padding: 10px; /* altura interna dos inputs */
+  font-size: 14px; /* tamanho da escrita */
+}
+
+.login input[type="password"] {
+  padding: 10px; /* altura interna dos inputs */
+  font-size: 14px; /* tamanho da escrita */
+}
+
+.login input[type="button"] {
+  margin-top: 60px; /* baixar o botao na div em relacao a input password */
+  padding: 12px; /* altura do botão */
+  cursor: pointer; /* cursor de mãozinha no botão */
+  border-radius: 2rem; /* Arredondar a ponta do botao */
+  border: none; /* tirar a borda do botao */
+  background-color: aliceblue; /* cor do botao  */
+  width: 8rem; /* tamanho do botao  */
+  transition: border-color 0.3s ease, transform 0.4s ease-in-out; /*Deixa o efeito de aumentar mais devagar e suave  */
+  font-family: "Montserrat", sans-serif; /*Fonte do bglh */
+  font-weight: bold; /* deixar o "entrar" em negrito */
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+  border: none; /* remove a borda completa */
+  border-bottom: 1px solid #ffffff; /* adiciona apenas a linha de baixo */
+  outline: none; /* remove contorno do navegador */
+  padding: 8px 4px; /* espaço interno pequeno */
+  font-size: 15px; /* tamanho das letras */
+  background: transparent; /* deixa o fundo transparente*/
+  transition: border-color 0.3s ease, transform 0.4s ease-in-out; /*Deixa o efeito de aumentar mais devagar e suave  */
+  color: #ffffff; /*Cor da escrita */
+  font-family: "Montserrat", sans-serif; /*Fonte do bglh */
+  width: 75%; /*tamanho da linha pra por a senha */
+}
+
+.login input[type="button"]:hover, /* hover pra quando passar o mause por cima */
+.login input[type="text"]:focus, /* foco pra quando clicar com o mouse */
+.login input[type="password"]:focus {
+  transform: scale(1.05); /* aumentar o tamanho de escala de 1 pra 1.05 */
 }
