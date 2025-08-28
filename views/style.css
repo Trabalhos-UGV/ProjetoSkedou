@@ -237,3 +237,10 @@ h1 {
   background-color: rgb(255, 255, 255);
   position: relative;
 }
+.container-fundo::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* ocupa toda a div */
+  background: url(".images.Logo.png") center/contain no-repeat;
+  z-index: 0;
+}
