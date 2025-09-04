@@ -1,6 +1,8 @@
 body {
+  height: 100%;
   margin: 0; /* remove a margem padrao */
   font-family: sans-serif; /* estilo das letras do bglh */
+  overflow: hidden;
 }
 .app {
   display: flex; /* permite trabalhar com flexbox */
@@ -229,11 +231,22 @@ h1 {
   font-weight: 500;
   position: relative;
   margin: 0;
-  margin-top: -30%;
+  margin-top: -10%;
 }
-.detalhe { /* Risco em baixo do Título Skedou*/
-  width: 620px;
+.detalhe {
+  /* Risco em baixo do Título Skedou*/
+  width: 38.75rem;
   height: 2px;
   background-color: rgb(255, 255, 255);
   position: relative;
+}
+.branding-image {
+  position: absolute;
+  top: 47%;
+  left: 53%;
+  transform: translate(-50%, -50%);
+  width: 25rem;
+  height: 25rem;
+  opacity: 0.3; /* Deixa a imagem sutil */
+  z-index: 0; /* Coloca a imagem atrás de tudo no container */
 }
