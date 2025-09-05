@@ -1,5 +1,3 @@
-const db = require('./cnx')
-
 async function mostrarListas() {
     let result = await db.query('SELECT * FROM preco_lista')
     return(result.rows)

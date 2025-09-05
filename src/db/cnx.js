@@ -1,11 +1,9 @@
-const { Pool } = require('pg')
+const { Sequelize } = require('sequelize');
 
-const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'Skedou',
-    password: 'postgres',
-    port: 5432
-})
+const sequelize = new Sequelize('Skedou', 'postgres', 'postgres', {
+  host: 'localhost',
+  dialect: 'postgres',
+  port: 5432
+});
 
-module.exports = pool;
+module.exports = sequelize; 
