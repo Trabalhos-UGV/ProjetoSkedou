@@ -1,5 +1,6 @@
 const historico = require('../models/viewHistorico')
 
+//select da view preco_lista, puxa todas as informações
 exports.listagem = async (req, res) => {
     try{
         const visualizar = await historico.findAll();

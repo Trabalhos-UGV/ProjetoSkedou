@@ -1,5 +1,7 @@
 const clientes = require('../models/clientes')
 
+
+//Select da tabela clientes
 exports.listarClientes = async (req, res) => {
     try{
         const visualizar = await clientes.findAll();
@@ -8,7 +10,8 @@ exports.listarClientes = async (req, res) => {
         res.status(500).send('Erro ao buscar o historico ' + error)
     }
 }   
-    
+
+//Select por cli_cod na tabela clientes (busca pelo parametro ex: http://localhost:3000/cli/2)
 exports.buscarCliente = async (req,res) => {
     try{
         const buscar = await clientes.findByPk(req.params.cli_cod)
@@ -19,6 +22,7 @@ exports.buscarCliente = async (req,res) => {
     }
 }
 
+//Insert de cliente na tabela (pega informações no body)
 exports.criarCliente = async (req, res) => {
     try{
         const novoCliente = await clientes.create({cli_usr: req.body.cli_usr,cli_nom: req.body.cli_nom})
@@ -28,6 +32,8 @@ exports.criarCliente = async (req, res) => {
     }
 }
 
+
+//Update de cliente na tabela (pega informações no body (busca pelo parametro ex: http://localhost:3000/cli/2))
 exports.attCliente = async (req, res) => {
     try{
         const cliente = await clientes.findByPk(req.params.cli_cod)
@@ -41,6 +47,7 @@ exports.attCliente = async (req, res) => {
     }
 }
 
+//Delete de cliente na tabela (busca pelo parametro ex: http://localhost:3000/cli/2)
 exports.delCliente = async (req, res) => {
     try{
         const deletar = await clientes.findByPk(req.params.cli_cod);
