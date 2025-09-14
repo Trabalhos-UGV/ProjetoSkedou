@@ -18,6 +18,10 @@ router.get('/about', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'html', 'landPage.html'))
 })
 
+router.get('/torma', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'html', 'Torma.html'))
+})
+
 router.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, 'images', 'notfound.png'))
 })
