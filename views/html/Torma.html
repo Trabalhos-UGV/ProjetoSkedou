@@ -7,22 +7,22 @@
   <title>TesteTorma</title>
   <script>
     async function coletarDados() {
-      const resposta = await fetch("http://localhost:3000/cli");
-      const dados = await resposta.json();
-      const tbody = document.getElementById("clientes-tbody");
-      tbody.innerHTML = ""; // Limpa antes de inserir
+      const resposta = await fetch("http://localhost:3000/cli"); //pega as informações da api
+      const dados = await resposta.json(); //tranforma as informações em json
+      const tbody = document.getElementById("clientes-tbody"); //pega o tbody do html
+      tbody.innerHTML = ""; // limpa o tbody do html
 
       dados.forEach((element) => {
-        const tr = document.createElement("tr");
+        const tr = document.createElement("tr"); //cria uma row para cada elemento do json
         tr.innerHTML = `
           <td>${element.cli_nom}</td>
           <td>${element.cli_cod}</td>
           <td>${element.cli_usr}</td>
-        `;
-        tbody.appendChild(tr);
+        `;//insere nas células do row as informações do json
+        tbody.appendChild(tr); //adiciona a row na tabela
       });
     }
-    coletarDados();
+    coletarDados();//executa a função
   </script>
   <style>
     table,
@@ -45,7 +45,6 @@
       </tr>
     </thead>
     <tbody id="clientes-tbody">
-      <!-- Dados serão inseridos aqui -->
     </tbody>
   </table>
 </body>
