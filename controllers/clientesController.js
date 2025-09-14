@@ -8,7 +8,7 @@ exports.listarClientes = async (req, res) => {
         res.status(500).send('Erro ao buscar o historico ' + error)
     }
 }   
-
+    
 exports.buscarCliente = async (req,res) => {
     try{
         const buscar = await clientes.findByPk(req.params.cli_cod)
@@ -37,7 +37,7 @@ exports.attCliente = async (req, res) => {
         await cliente.save();
         res.json(cliente)
     }catch(error){
-        res.status(500).send('Erro ao atualizar curso ' + error.message)
+        res.status(500).send('Erro ao atualizar cliente ' + error.message)
     }
 }
 
