@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViewHistoricoClientes</title>
+</head>
+<body>
+    <table>
+    <thead>
+      <tr>
+        <th>Nome do cliente</th>
+        <th>Ultimo agendamento</th>
+        <th>Quantidade de servicos</th>
+        <th>Valor total</th>
+      </tr>
+    </thead>
+    <tbody id="historico">
+    </tbody>
+  </table>
+  <script>
+    async function coletarDados() {
+      const resposta = await fetch("http://localhost:3000/h");
+      const dados = await resposta.json();
+      const tbody = document.getElementById("historico");
+      tbody.innerHTML = "";
+
+      dados.forEach((element) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${element.nome_cliente}</td>
+          <td>${element.ultimo_agendamento}</td>
+          <td>${element.quan_servicos}</td>
+          <td>${element.valor_solicitacao}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+    coletarDados();
+  </script>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 7px;
+    }
+  </style>
+</body>
+</html>
