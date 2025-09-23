@@ -52,6 +52,11 @@ router.get('/hist', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'html', 'view.html'))
 })
 
+//Teste
+router.get('/clipost', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'html', 'teste.html'))
+})
+
 //Imagem 404 quando uma rota não é encontrada
 router.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, 'images', 'notfound.png'))

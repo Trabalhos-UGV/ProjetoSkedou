@@ -10,7 +10,8 @@ const clientes = sequelize.define("clientes", {
     },
     //usuário do cliente, foreign key da tabela usuarios
     cli_usr:{
-        type: DataTypes.BIGINT
+        type: DataTypes.BIGINT,
+        unique: true
     },
     //nome do cliente
     cli_nom:{
