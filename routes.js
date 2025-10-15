@@ -8,6 +8,7 @@ const router = express.Router()
 const path = require('path')
 //Controller do model clientes
 const clientes = require('./controllers/clientesController')
+const empresas = require('./controllers/empresasController')
 //Controller do model viewhistorico
 const historico = require('./controllers/historicoController')
 
@@ -15,6 +16,8 @@ const historico = require('./controllers/historicoController')
 router.get('/', (req, res) => {
   res.send('Hello, World!')
 })
+
+router.post('/emp', empresas.postEmp);
 
 //CRUD na tabela clientes do banco de dados
 

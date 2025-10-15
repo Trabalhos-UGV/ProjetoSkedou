@@ -3,9 +3,12 @@ const app = express();
 const port = 3000;
 const router = require("../routes");
 const sequelize = require('../src/db/cnx')
+const cors = require('cors')
 
 //permite a gente utilizar .json
 app.use(express.json());
+
+app.use(cors()) //pemite origin em todas as rotas
 
 //permite a gente usar o arquivo routes para rotas
 app.use(router);
