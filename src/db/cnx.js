@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 //faz a conexão com o banco utilizando o sequelize
-const sequelize = new Sequelize('Skedou', 'postgres', 'postgres', {
+const sequelize = new Sequelize('Skedou2', 'postgres', 'postgres', {
   host: 'localhost',
   dialect: 'postgres',
   port: 5432

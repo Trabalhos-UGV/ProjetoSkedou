@@ -1,9 +1,10 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../src/db/cnx');
+const usuario = require()
 
 const empresa = sequelize.define("empresas", {
     emp_cod: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
@@ -15,8 +16,17 @@ const empresa = sequelize.define("empresas", {
         type: DataTypes.STRING,
         allowNull: false
     },
-    emp_typ: {
+    emp_cat: {
         type: DataTypes.STRING,
+        allowNull: false
+    },
+    emp_atv: {
+        type: DataTypes.BOOLEAN,
+        default: true,
+        allowNull: false
+    },
+    emp_usr: {
+        type: DataTypes.INTEGER,
         allowNull: false
     }
 },
@@ -24,5 +34,7 @@ const empresa = sequelize.define("empresas", {
     tableName: 'empresas',
     timestamps: false
 })
+
+emp_usr.
 
 module.exports = empresa;
