@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize')
-const sequelize = require('../src/db/cnx');
+const sequelize = require('../../src/db/cnx');
 const usuario = require()
 
 const empresa = sequelize.define("empresas", {
