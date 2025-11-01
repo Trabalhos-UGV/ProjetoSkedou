@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>
+        //Rota padrão, mostra as rotas de api <br>
+            router.get('/', (req, res) => { <br>
+                res.send(__dirname + '/src/index.html') <br>
+            })
+        </p>
+        <p>
+        //Rota de cadastro do usuário <br>
+            router.post('/api/usuarios/cadastro', usuariosController.cadastrarUsuario) //Cadastro do usuário<br>
+            router.post('/api/usuarios/login', usuariosController.loginUsuario) //Login do usuário<br>
+        </p>
+        <p>
+        //Imagem 404 quando uma rota não é encontrada <br>
+            router.use((req, res, next) => { <br>
+                res.status(404).sendFile(path.join(__dirname, 'images', 'notfound.png')) <br>
+            })
+        </p>
+    </div>
+</body>
+</html>
