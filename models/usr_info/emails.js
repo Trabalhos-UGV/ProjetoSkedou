@@ -5,6 +5,7 @@ const emails = sequelize.define("emails", {
     eml_cod: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        primaryKey: true,
         autoIncrement: true
     },
     eml_end: {

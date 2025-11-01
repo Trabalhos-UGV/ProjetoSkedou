@@ -5,14 +5,11 @@ const telefones = sequelize.define("telefones", {
     tel_cod: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        primaryKey: true,
         autoIncrement: true
     },
-    tel_ddd: {
-        type: DataTypes.STRING(2),
-        allowNull: false
-    },
     tel_num: {
-        type: DataTypes.STRING(9),
+        type: DataTypes.STRING,
         allowNull: false
     }
 },
