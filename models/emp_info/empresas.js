@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../../src/db/cnx');
-const usuario = require()
 
 const empresa = sequelize.define("empresas", {
     emp_cod: {
@@ -17,7 +16,7 @@ const empresa = sequelize.define("empresas", {
         allowNull: false
     },
     emp_cat: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     emp_atv: {
@@ -28,13 +27,15 @@ const empresa = sequelize.define("empresas", {
     emp_usr: {
         type: DataTypes.INTEGER,
         allowNull: false
+    },
+    emp_dsc: {
+        type: DataTypes.TEXT,
+        allowNull: false
     }
 },
 {
     tableName: 'empresas',
     timestamps: false
 })
-
-emp_usr.
 
 module.exports = empresa;

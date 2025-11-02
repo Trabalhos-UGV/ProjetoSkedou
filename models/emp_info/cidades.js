@@ -4,7 +4,7 @@ const { DataTypes } = require('sequelize')
 const cidades = sequelize.define('cidades', {
     cid_cod: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        primaryKey: true,
         autoIncrement: true
     },
     cid_nom: {

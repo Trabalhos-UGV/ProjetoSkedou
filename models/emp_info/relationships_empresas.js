@@ -4,7 +4,7 @@ const enderecos = require('./enderecos')
 const funcionarios = require('./funcionarios')
 const horarios_funcionamento = require('./horarios_funcionamento')
 const telefones_empresas = require('./telefones_empresas')
-const cidades = require('./cidades')
+/* const cidades = require('./cidades') */
 const sequelize = require('../../src/db/cnx')
 const usuario = require('../usr_info/usuarios')
 
@@ -20,11 +20,11 @@ emails_empresas.belongsTo(empresas,{
     as: 'email_empresa'
 })
 
-enderecos.belongsTo(cidades, {
+/* enderecos.belongsTo(cidades, {
     foreignKey: 'end_cid',
     targetKey: 'cid_cod',
     as: 'cidade_endereco'
-})
+}) */
 
 enderecos.belongsTo(empresas, {
     foreignKey: 'end_emp',
@@ -57,6 +57,5 @@ module.exports = {
     funcionarios,
     emails_empresas,
     telefones_empresas,
-    enderecos,
-    cidades
+    enderecos
 }

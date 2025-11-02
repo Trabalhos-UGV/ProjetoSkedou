@@ -1,10 +1,10 @@
 const sequelize = require('../../src/db/cnx')
-const { DataTypes, Model } = require('sequelize')
+const { DataTypes } = require('sequelize')
 
 const emails_empresas = sequelize.define('emails_empresas', {
     eml_emp_cod: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        primaryKey: true,
         autoIncrement: true
     },
     eml_emp_end: {

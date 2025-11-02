@@ -12,12 +12,99 @@
             router.get('/', (req, res) => { <br>
                 res.send(__dirname + '/src/index.html') <br>
             })
-        </p>
+        </p><br><br>
+
         <p>
         //Rota de cadastro do usuário <br>
             router.post('/api/usuarios/cadastro', usuariosController.cadastrarUsuario) //Cadastro do usuário<br>
-            router.post('/api/usuarios/login', usuariosController.loginUsuario) //Login do usuário<br>
-        </p>
+            router.post('/api/usuarios/login', usuariosController.loginUsuario) //Login do usuário<br><br><br>
+
+        body json para o cadastro: <br>
+        { <br>
+            "usr_nom": "nome_do_usuario", <br>
+            "eml_end": "endereco_de_email", <br>
+            "tel_num": "numero_de_telefone", <br>
+            "usr_cpfcnpj": "cpf_ou_cnpj_do_user", <br>
+            "usr_sen"? "senha_do_user" <br>
+        } <br><br>
+
+        body json para o login do user: <br>
+        {<br>
+            "eml_end": "endereco_de_email", <br>
+            "usr_sen": "senha_do_user" <br>
+        } <br>
+        </p> <br><br>
+
+        <p>
+        //Rota de cadastro da empresa <br>
+        router.post('/api/empresas/cadastro', empresasController.cadastrarEmpresa) <br><br>
+        
+        body json para cadastro da empresa: <br>
+        {<br>
+            "emp_nom": "Empresa Teste 3",<br>
+            "emp_cnpj": "12345678901234",<br>
+            "emp_cat": 1,<br>
+            "emp_usr": 2,<br>
+                "emp_dsc": "Descrição",<br>
+            "email": "empresa@teste.com",<br>
+            "telefone": "999999999",<br>
+            "endereco": {<br>
+                "rua": "Rua Teste"<br>
+            },<br>
+            "horarios": [<br>
+                {<br>
+                    "dia": "Segunda",<br>
+                                "aberto": true,<br>
+                    "abertura": "08:00:00",<br>
+                    "fechamento": "18:00:00",<br>
+                    "meiodia": true <br>
+                },<br>
+                {<br>
+                    "dia": "Terca",<br>
+                                "aberto": true,<br>
+                    "abertura": "08:00:00",<br>
+                    "fechamento": "18:00:00",<br>
+                    "meiodia": true <br>
+                },<br>
+                        {<br>
+                    "dia": "Quarta",<br>
+                                "aberto": true,<br>
+                    "abertura": "08:00:00",<br>
+                    "fechamento": "18:00:00",<br>
+                    "meiodia": true <br>
+                },<br>
+                {<br>
+                    "dia": "Quinta",<br>
+                                "aberto": true,<br>
+                    "abertura": "08:00:00",<br>
+                    "fechamento": "18:00:00",<br>
+                    "meiodia": true <br>
+                },<br>
+                        {<br>
+                    "dia": "Sexta",<br>
+                                "aberto": true,<br>
+                    "abertura": "08:00:00",<br>
+                    "fechamento": "18:00:00",<br>
+                    "meiodia": true <br>
+                },<br>
+                        {<br>
+                    "dia": "Sabado",<br>
+                                "aberto": false,<br>
+                    "abertura": "",<br>
+                    "fechamento": "",<br>
+                    "meiodia": false <br>
+                },<br>
+                        {<br>
+                    "dia": "Domingo",<br>
+                                "aberto": true,<br>
+                    "abertura": "",<br>
+                    "fechamento": "",<br>
+                    "meiodia": true <br>
+                } <br>
+            ] <br>
+        } <br>
+        </p><br><br>
+
         <p>
         //Imagem 404 quando uma rota não é encontrada <br>
             router.use((req, res, next) => { <br>

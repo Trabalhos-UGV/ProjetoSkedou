@@ -1,10 +1,10 @@
 const sequelize = require('../../src/db/cnx')
-const { DataTypes, Model } = require('sequelize')
+const { DataTypes } = require('sequelize')
 
 const funcionarios = sequelize.define('funcionarios', {
     fun_cod: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        primaryKey: true,
         autoIncrement: true
     },
     fun_nom: {

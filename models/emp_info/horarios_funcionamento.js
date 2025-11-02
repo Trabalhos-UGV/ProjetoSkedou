@@ -1,14 +1,18 @@
 const sequelize = require('../../src/db/cnx')
-const { DataTypes, Model } = require('sequelize')
+const { DataTypes } = require('sequelize')
 
 const horarios_funcionamento = sequelize.define('horarios_funcionamento',{
     hor_cod: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        primaryKey: true,
         autoIncrement: true
     },
     hor_sem: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    hor_aberto: {
+        type: DataTypes.BOOLEAN,
         allowNull: false
     },
     hor_abt: {
@@ -17,6 +21,10 @@ const horarios_funcionamento = sequelize.define('horarios_funcionamento',{
     },
     hor_fch: {
         type: DataTypes.TIME,
+        allowNull: false
+    },
+    hor_meiodia: {
+        type: DataTypes.BOOLEAN,
         allowNull: false
     },
     hor_emp: {
