@@ -14,6 +14,9 @@
   //Empresas
     const empresasController = require('./controllers/empresasController')
 
+  //Servicos
+    const servicosController = require('./controllers/servicosController')
+
 //Rota padrão, mostra as rotas de api
   router.get('/', (req, res) => {
     res.sendFile(__dirname + '/src/index.html')
@@ -25,6 +28,13 @@
 
 //Rota de cadastro da empresa
   router.post('/api/empresas/cadastro', empresasController.cadastrarEmpresa)
+  router.get('/api/empresas/buscaUser/:usr_cod', empresasController.buscaEmpresa)
+  router.get('/api/empresas/categoria/:emp_cat', empresasController.buscaEmpresaCat)
+  router.get('/api/empresas', empresasController.buscaTodas)
+
+//Rota para cadastro de serviço
+  router.post('/api/servicos/cadastro', servicosController.cadastrarServico)
+  router.get('/api/servicos/empresa/:emp_cod', servicosController.listarServicosPorEmpresa)
 
 //Imagem 404 quando uma rota não é encontrada
   router.use((req, res, next) => {

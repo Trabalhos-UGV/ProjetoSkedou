@@ -38,6 +38,14 @@
         <p>
         //Rota de cadastro da empresa <br>
         router.post('/api/empresas/cadastro', empresasController.cadastrarEmpresa) <br><br>
+        router.get('/api/empresas', empresasController.buscaTodas) <br><br>
+
+        router.get('/api/empresas/buscaUser/:usr_cod', empresasController.buscaEmpresa)<br>
+        troca :usr_cod pelo código do usuario nos parâmetros <br><br>
+
+        router.get('/api/empresas/categoria/:emp_cat', empresasController.buscaEmpresaCat) <br>
+        troca :emp_cat pelo número da categoria nos parâmetros<br><br>
+
         
         body json para cadastro da empresa: <br>
         {<br>
@@ -103,7 +111,22 @@
                 } <br>
             ] <br>
         } <br>
-        </p><br><br>
+        </p><br><br><br>
+
+        <p>
+            //Rota de cadastro de serviço <br>
+              router.post('/api/servicos', servicosController.cadastrarServico) <br>
+              router.get('/api/servicos/empresa/:emp_cod', servicosController.listarServicosPorEmpresa) <br>
+              troca :emp_cod pelo código da empresa <br> <br>
+
+            body json para cadastrar serviço (OBS: sev_dsc pode ser adicionado para dar uma descrição no serviço, se não for, um valor ' ' será adicionado) <br>
+            {  <br>
+            "sev_nom":	"troca de peça", <br>
+            "sev_prc": 	150, <br>
+            "sev_emp": 	17, <br>
+            "sev_dur":	60 <br>
+            }   <br>
+        </p> <br><br><br>
 
         <p>
         //Imagem 404 quando uma rota não é encontrada <br>

@@ -7,6 +7,19 @@ const telefones_empresas = require('./telefones_empresas')
 /* const cidades = require('./cidades') */
 const sequelize = require('../../src/db/cnx')
 const usuario = require('../usr_info/usuarios')
+const avaliacaoes = require('./avalicoes')
+
+usuario.hasMany(avaliacaoes, {
+    foreignKey: 'ava_usr',
+    targetKey: 'usr_cod',
+    as: 'usuario_avaliacao'
+})
+
+empresas.hasMany(avaliacaoes, {
+    foreignKey: 'ava_emp',
+    targetKey: 'emp_cod',
+    as: 'empresa_avaliacao'
+})
 
 telefones_empresas.belongsTo(empresas, {
     foreignKey: 'tel_emp',
@@ -20,11 +33,35 @@ emails_empresas.belongsTo(empresas,{
     as: 'email_empresa'
 })
 
-/* enderecos.belongsTo(cidades, {
-    foreignKey: 'end_cid',
-    targetKey: 'cid_cod',
-    as: 'cidade_endereco'
-}) */
+empresas.hasMany(horarios_funcionamento, {
+    foreignKey: 'hor_emp',
+    sourceKey: 'emp_cod',
+    as: 'horario_de_funcionamento'
+})
+
+empresas.hasMany(telefones_empresas, {
+    foreignKey: 'tel_emp',
+    sourceKey: 'emp_cod',
+    as: 'telefone_empresa'
+})
+
+empresas.hasMany(emails_empresas, {
+    foreignKey: 'eml_emp',
+    sourceKey: 'emp_cod',
+    as: 'email_empresa'
+})
+
+empresas.hasMany(enderecos, {
+    foreignKey: 'end_emp',
+    sourceKey: 'emp_cod',
+    as: 'enderecos_empresa'
+})
+
+empresas.hasMany(funcionarios, {
+    foreignKey: 'fun_emp',
+    sourceKey: 'emp_cod',
+    as: 'funcionario'
+})
 
 enderecos.belongsTo(empresas, {
     foreignKey: 'end_emp',
@@ -57,5 +94,7 @@ module.exports = {
     funcionarios,
     emails_empresas,
     telefones_empresas,
-    enderecos
+    enderecos,
+    usuario,
+    avaliacaoes
 }

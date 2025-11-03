@@ -7,6 +7,8 @@ const {
     sequelize
 } = require('../models/emp_info/relationships_empresas')
 
+const { usuario } = require('../models/usr_info/relationships')
+
 // função para validar hora
 function validateTime(time) {
     if (!time || time === '') {
@@ -22,6 +24,8 @@ function validateTime(time) {
     // Adiciona segundos se não tiver
     return time.length === 5 ? `${time}:00` : time
 }
+
+// Função de cadastro da empresa
 
 async function cadastrarEmpresa(req, res) {
     // Extrai dados do body
@@ -111,6 +115,216 @@ async function cadastrarEmpresa(req, res) {
     }
 }
 
+//Buscar todas empresas
+
+async function buscaTodas(req, res) {
+    try{
+        const encontrarTodas = await empresas.findAll({
+            include: [
+                {
+                    model: telefones_empresas,
+                    as: 'telefone_empresa',
+                    attributes: ['tel_emp_num']
+                },
+                {
+                    model: horarios_funcionamento,
+                    as: 'horario_de_funcionamento',
+                    attributes: ['hor_sem', 'hor_abt', 'hor_fch', 'hor_meiodia', 'hor_aberto']
+                },
+                {
+                    model: usuario,
+                    as: 'empresa_usuario',
+                    attributes: ['usr_cod', 'usr_nom']
+                }
+            ]
+        })
+
+        const empresasFormatadas = encontrarTodas.map(empresa => ({
+            empresa: {
+                codigo: empresa.emp_cod,
+                nome: empresa.emp_nom,
+                categoria: empresa.emp_cat,
+                descricao: empresa.emp_dsc,
+                telefone: empresa.telefone_empresa?.tel_emp_num,
+                horarios: empresa.horario_de_funcionamento?.map(horario => ({
+                    dia: horario.hor_sem,
+                    aberto: horario.hor_aberto,
+                    horario_abertura: horario.hor_abt,
+                    horario_fechamento: horario.hor_fch,
+                    fecha_meio_dia: horario.hor_meiodia
+                })),
+                usuario: {
+                    codigo: empresa.empresa_usuario?.usr_cod,
+                    nome: empresa.empresa_usuario?.usr_nom
+                }
+            }
+        }));
+
+        return res.status(200).json(empresasFormatadas)
+    }catch(error){
+        console.error('Erro ao buscar empresas:', error);
+        return res.status(500).json({
+            error: 'Erro ao buscar empresas',
+            details: error.message
+        });
+    }
+}
+
+//Função de busca de empresa por usuario
+
+async function buscaEmpresa(req, res) {
+    const { usr_cod } = req.params;
+
+    if (!usr_cod) {
+        return res.status(400).json({
+            error: 'Código do usuário é obrigatório'
+        });
+    }
+
+    try {
+        const empresasEncontradas = await empresas.findAll({
+            where: {
+                emp_usr: usr_cod,
+                emp_atv: true
+            },
+            attributes: ['emp_cod', 'emp_nom', 'emp_cat', 'emp_dsc'],
+            include: [
+                {
+                    model: telefones_empresas,
+                    as: 'telefone_empresa',
+                    attributes: ['tel_emp_num']
+                },
+                {
+                    model: horarios_funcionamento,
+                    as: 'horario_de_funcionamento',
+                    attributes: ['hor_sem', 'hor_abt', 'hor_fch', 'hor_meiodia', 'hor_aberto']
+                },
+                {
+                    model: usuario,
+                    as: 'empresa_usuario',
+                    attributes: ['usr_cod', 'usr_nom']
+                }
+            ]
+        });
+
+        if (!empresasEncontradas || empresasEncontradas.length === 0) {
+            return res.status(404).json({
+                message: 'Nenhuma empresa encontrada para este usuário'
+            });
+        }
+
+        // Formata a resposta
+        const empresasFormatadas = empresasEncontradas.map(empresa => ({
+            empresa: {
+                codigo: empresa.emp_cod,
+                nome: empresa.emp_nom,
+                categoria: empresa.emp_cat,
+                descricao: empresa.emp_dsc,
+                telefone: empresa.telefone_empresa?.tel_emp_num,
+                horarios: empresa.horario_de_funcionamento?.map(horario => ({
+                    dia: horario.hor_sem,
+                    aberto: horario.hor_aberto,
+                    horario_abertura: horario.hor_abt,
+                    horario_fechamento: horario.hor_fch,
+                    fecha_meio_dia: horario.hor_meiodia
+                })),
+                usuario: {
+                    codigo: empresa.empresa_usuario?.usr_cod,
+                    nome: empresa.empresa_usuario?.usr_nom
+                }
+            }
+        }));
+
+        return res.status(200).json(empresasFormatadas);
+
+    } catch (error) {
+        console.error('Erro ao buscar empresas:', error);
+        return res.status(500).json({
+            error: 'Erro ao buscar empresas',
+            details: error.message
+        });
+    }
+}
+
+// Busca por categoria
+
+async function buscaEmpresaCat(req, res) {
+    const { emp_cat } = req.params;
+
+    if (!emp_cat) {
+        return res.status(400).json({
+            error: 'Categoria da empresa é obrigatório'
+        });
+    }
+
+    try{
+        const empresasEncontradas = await empresas.findAll({
+            where: {
+                emp_cat: emp_cat,
+                emp_atv: true
+            },
+            attributes: ['emp_cod', 'emp_nom', 'emp_cat', 'emp_dsc'],
+            include: [
+                {
+                    model: telefones_empresas,
+                    as: 'telefone_empresa',
+                    attributes: ['tel_emp_num']
+                },
+                {
+                    model: horarios_funcionamento,
+                    as: 'horario_de_funcionamento',
+                    attributes: ['hor_sem', 'hor_abt', 'hor_fch', 'hor_meiodia', 'hor_aberto']
+                },
+                {
+                    model: usuario,
+                    as: 'empresa_usuario',
+                    attributes: ['usr_cod', 'usr_nom']
+                }
+            ]
+        });
+
+        if (!empresasEncontradas || empresasEncontradas.length === 0) {
+            return res.status(404).json({
+                message: 'Nenhuma empresa encontrada com essa categoria'
+            });
+        }
+
+        const empresasFormatadas = empresasEncontradas.map(empresa => ({
+            empresa: {
+                codigo: empresa.emp_cod,
+                nome: empresa.emp_nom,
+                categoria: empresa.emp_cat,
+                descricao: empresa.emp_dsc,
+                telefone: empresa.telefone_empresa?.tel_emp_num,
+                horarios: empresa.horario_de_funcionamento?.map(horario => ({
+                    dia: horario.hor_sem,
+                    aberto: horario.hor_aberto,
+                    horario_abertura: horario.hor_abt,
+                    horario_fechamento: horario.hor_fch,
+                    fecha_meio_dia: horario.hor_meiodia
+                })),
+                usuario: {
+                    codigo: empresa.empresa_usuario?.usr_cod,
+                    nome: empresa.empresa_usuario?.usr_nom
+                }
+            }
+        }));
+
+        return res.status(200).json(empresasFormatadas);
+
+    }catch(err){
+        console.error('Erro ao buscar empresas:', error);
+        return res.status(500).json({
+            error: 'Erro ao buscar empresas',
+            details: error.message
+        });
+    }
+}
+
+
 module.exports = {
-    cadastrarEmpresa
+    buscaEmpresa,
+    cadastrarEmpresa,
+    buscaEmpresaCat,
+    buscaTodas
 }

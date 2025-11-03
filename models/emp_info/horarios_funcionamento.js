@@ -2,32 +2,32 @@ const sequelize = require('../../src/db/cnx')
 const { DataTypes } = require('sequelize')
 
 const horarios_funcionamento = sequelize.define('horarios_funcionamento',{
-    hor_cod: {
+    hor_cod: { //Código do horario
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    hor_sem: {
+    hor_sem: { //Dia da semana deste horario
         type: DataTypes.STRING,
         allowNull: false
     },
-    hor_aberto: {
+    hor_aberto: { //Se a empresa abre neste dia
         type: DataTypes.BOOLEAN,
         allowNull: false
     },
-    hor_abt: {
+    hor_abt: { //Que horas a empresa abre, 00:00:00 se não abrir no dia
         type: DataTypes.TIME,
         allowNull: false
     },
-    hor_fch: {
+    hor_fch: { //Que horas a empresa fecha, 00:00:00 se não abrir no dia
         type: DataTypes.TIME,
         allowNull: false
     },
-    hor_meiodia: {
+    hor_meiodia: { //Se a empresa fecha meio dia, true ela fecha false ela abre
         type: DataTypes.BOOLEAN,
         allowNull: false
     },
-    hor_emp: {
+    hor_emp: { //Qual empresa é esse horario
         type: DataTypes.INTEGER,
         allowNull: false
     }
